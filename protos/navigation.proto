@@ -1,0 +1,191 @@
+syntax = "proto3";
+
+package navigation;
+
+/** render */
+
+message IconRenderer {
+  string iconType = 1;
+}
+
+message Run {
+  NavigationEndpoint navigationEndpoint = 1;   
+  string text = 2;
+}
+
+message Runs {
+  repeated Run runs = 1;
+}
+
+message Thumbnail {
+  string url = 1;
+  int32 width = 2;
+  int32 height = 3;
+}
+
+message Thumbnails {
+  Thumbnail normal = 1;
+  Thumbnail medium = 2; 
+}
+
+message NavigationEndpoint {
+  BrowseEndpoint browseEndpoint = 1;
+  WatchEndpoint watchEndpoint = 2;
+  string clickTrackingParams = 3;
+}
+
+message NextContinuationData {
+  string clickTrackingParams = 1;
+  string continuation = 2;
+}
+
+message Continuation {
+  NextContinuationData nextContinuationData = 1;
+}
+
+message SpinnerRenderer {
+}
+
+message CompactNewsRenderer {
+  NavigationEndpoint navigationEndpoint = 1;   
+  Runs title = 2;
+  Runs shortByline = 3;
+  repeated Thumbnails thumbnails = 4;
+  string trackingParams = 5;
+}
+
+message NewsMetadataRenderer {
+  Runs title = 1;
+}
+
+message NewsOwnerRenderer {
+  Runs title = 1;
+  Thumbnails thumbnail = 2;
+  Runs subscriberCountText = 3;
+}
+
+message NewsContent {
+  Runs longText = 1;
+  Thumbnail thumbnail = 2;
+}
+
+message NewsContentRenderer {
+  repeated NewsContent contents = 1;
+}
+
+message EditButtonRenderer {
+  Runs buttonText = 1;  
+}
+
+message EditButton {
+  EditButtonRenderer editButtonRenderer = 1;
+}
+
+message TableColumnContent {
+  Runs text = 1;
+  IconRenderer icon = 2;
+}
+
+message TableColumnRenderer {
+  repeated TableColumnContent contents = 1;
+}
+
+message TableRowRenderer {
+  repeated TableCellRenderer cells = 1; 
+}
+
+message ChipRenderer {
+  Runs label = 1;
+}
+
+message TableCellContent {
+  Runs text = 1;
+  IconRenderer icon = 2;
+  Thumbnails thumbnail = 3;
+  ChipRenderer chip = 4; 
+}
+
+message TableCellRenderer {
+  repeated TableCellContent contents = 1;
+  bool showEditIcon = 2; 
+}
+
+message PaginatedTableRenderer {
+  repeated TableColumnRenderer columns = 1;
+  repeated TableRowRenderer rows = 2;
+}
+
+message ItemSectionContent {
+  CompactNewsRenderer compactNewsRenderer = 1;
+  SpinnerRenderer spinnerRenderer = 2;
+  NewsMetadataRenderer newsMetadataRenderer = 3;
+  NewsOwnerRenderer newsOwnerRenderer = 4;
+  NewsContentRenderer newsContentRenderer = 5;
+  PaginatedTableRenderer paginatedTableRenderer = 6;
+}
+
+message ItemSectionRenderer {
+  repeated ItemSectionContent contents = 1;
+  repeated Continuation continuations = 2; 
+  string trackingParams = 3;
+}
+
+message SectionListContent {
+  ItemSectionRenderer itemSectionRenderer = 1;
+}
+
+message ItemSectionContinuation {
+  repeated ItemSectionContent contents = 1;
+  repeated Continuation continuations = 2; 
+  string trackingParams = 3;
+}
+
+message SectionListRenderer {
+  repeated SectionListContent contents = 1;
+}
+
+/** Endpoint */
+
+message BrowseEndpoint {
+  string browseId = 1;
+  string type = 2;
+}
+
+message WatchEndpoint {
+  string watchId = 1;
+  string type = 2;
+}
+
+/** Request & Response */
+
+message NavigationRequestContextClient {
+  string appId = 1;
+  string appVersion = 2;
+}
+
+message NavigationRequestContext {
+  NavigationRequestContextClient client = 1;
+}
+
+message NavigationRequest {
+  NavigationEndpoint navigationEndpoint = 1;   
+  NavigationRequestContext context = 2;  
+  string continuation = 3;
+}
+
+message NavigationResponseContinuationContents {
+  ItemSectionContinuation itemSectionContinuation = 1;
+}
+
+message NavigationResponseContents {
+  SectionListRenderer sectionListRenderer = 1;
+}
+
+message NavigationResponse {
+  NavigationResponseContents contents = 1;
+  NavigationResponseContinuationContents continuationContents = 2;  
+}
+
+service Navigation {
+  rpc Fetch(NavigationRequest) returns (NavigationResponse) {}
+}

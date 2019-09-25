@@ -1,0 +1,19 @@
+name: hestia 
+description: Hestia libraries for Dart on the server and flutter
+version: 0.0.1
+authors: 
+- Nathan XIAO <chonebz@gmail.com>
+homepage: https://github.com/hestia-io/hestia-dart
+
+environment:
+  sdk: '>=2.2.0 <3.0.0'
+
+dependencies:
+  grpc: ^2.1.2
+  async: ^2.3.0
+  protobuf: ^0.14.1
+
+dev_dependencies:
+  test: ^1.6.9
+  mockito: ^4.1.1
+

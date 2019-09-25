@@ -1,0 +1,7 @@
+
+.DS_Store
+.packages
+
+.dart_tool/
+
+*.sw*
