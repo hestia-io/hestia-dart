@@ -1,7 +1,4 @@
-import 'dart:async';
-import 'package:grpc/grpc.dart' as grpc;
-
-import 'navigation.pbgrpc.dart';
+part of hestia_server;
 
 abstract class Service {}
 
@@ -35,7 +32,7 @@ class _NavigationService extends NavigationServiceBase {
 
   @override
   Future<NavigationResponse> fetch(
-      grpc.ServiceCall call, NavigationRequest request) async {
+      ServiceCall call, NavigationRequest request) async {
     try {
       if (request.navigationEndpoint.hasWatchEndpoint()) {
         return null; //handleWatch(request);
@@ -50,15 +47,15 @@ class _NavigationService extends NavigationServiceBase {
   }
 }
 
-class Server {
-  Server({this.services});
+class HestiaServer {
+  HestiaServer({this.services});
 
   final List<Service> services;
 
-  grpc.Server _server;
+  Server _server;
 
   run({int port}) async {
-    _server = grpc.Server([_NavigationService()..services = services]);
+    _server = Server([_NavigationService()..services = services]);
     try {
       await _server.serve(port: port);
       print('Server listening on port ${port}...');

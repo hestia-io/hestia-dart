@@ -1,22 +1,12 @@
-import 'dart:async';
+part of hestia_navigation;
 
-import 'app.dart';
-import 'navigation.pb.dart';
-
-// ignore: uri_does_not_exist
-import 'client_stub.dart'
-    // ignore: uri_does_not_exist
-    if (dart.library.html) 'web_client.dart'
-    // ignore: uri_does_not_exist
-    if (dart.library.io) 'io_client.dart' as client;
-
-class Navigation {
-  Navigation({String appName, App app}) {
+class HestiaNavigation {
+  HestiaNavigation({String appName, HestiaApp app}) {
     if (app == null) {
       if (appName == null) {
-        app = getDefaultApp();
+        app = HestiaApp.defaultApp;
       } else {
-        app = getAppNamed(appName);
+        app = HestiaApp.appNamed(appName);
       }
     }
 
@@ -27,7 +17,7 @@ class Navigation {
     _app = app;
   }
 
-  App _app;
+  HestiaApp _app;
 
   /// Request given endpoint
   Future<NavigationResponse> requestNavigation(

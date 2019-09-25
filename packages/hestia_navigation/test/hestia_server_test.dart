@@ -1,9 +1,10 @@
 import 'dart:async';
 import 'package:test/test.dart';
-import 'package:grpc/grpc.dart' as grpc;
+import 'package:grpc/grpc.dart';
 
-import 'package:hestia/server.dart';
-import 'package:hestia/src/navigation.pbgrpc.dart';
+import 'package:hestia_navigation/hestia_navigation.dart';
+import 'package:hestia_navigation/hestia_server.dart';
+import 'package:hestia_navigation/src/navigation.pbgrpc.dart';
 
 @TestOn('vm')
 class TestBrowseService implements BrowseService {
@@ -23,20 +24,20 @@ class TestBrowseService implements BrowseService {
 void main() {
   group('server', () {
     test('run', () async {
-      const int port = 8000;
+      const int port = 8090;
       const String appId = 'testApp';
       const String appVersion = '1.0';
 
       TestBrowseService testBrowseService = TestBrowseService();
-      Server server = Server(services: [testBrowseService]);
+      HestiaServer server = HestiaServer(services: [testBrowseService]);
 
       server.run(port: port);
 
-      grpc.ClientChannel channel = grpc.ClientChannel(
+      ClientChannel channel = ClientChannel(
         '127.0.0.1',
         port: port,
-        options: const grpc.ChannelOptions(
-          credentials: const grpc.ChannelCredentials.insecure(),
+        options: const ChannelOptions(
+          credentials: const ChannelCredentials.insecure(),
         ),
       );
 
