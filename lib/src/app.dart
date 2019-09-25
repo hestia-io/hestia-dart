@@ -9,7 +9,7 @@ String _defaultAppName = "[DEFAULT]";
 class App {
   const App({
     this.name,
-    this.navigationURL,
+    this.navigationUrl,
     this.projectId,
     this.appId,
     this.appVersion,
@@ -17,7 +17,7 @@ class App {
 
   final String name;
 
-  final String navigationURL;
+  final String navigationUrl;
 
   final String projectId;
 
@@ -29,7 +29,7 @@ class App {
 /// Initialize an app with given options
 Future<App> initializeApp({
   String name,
-  String navigationURL,
+  String navigationUrl,
   String projectId,
   String appId,
   String appVersion,
@@ -43,7 +43,7 @@ Future<App> initializeApp({
     }
     _apps[name] = App(
       name: name,
-      navigationURL: navigationURL,
+      navigationUrl: navigationUrl,
       projectId: projectId,
       appId: appId,
       appVersion: appVersion,

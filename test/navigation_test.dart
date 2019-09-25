@@ -34,7 +34,7 @@ void main() {
       const testAppVersion = 'testAppVersion';
 
       await initializeApp(
-        navigationURL: testUrl,
+        navigationUrl: testUrl,
         projectId: testProjectId,
         appId: testAppId,
         appVersion: testAppVersion,

@@ -20,7 +20,7 @@ class Navigation {
       }
     }
 
-    assert(app.navigationURL != null);
+    assert(app.navigationUrl != null);
     assert(app.appId != null);
     assert(app.projectId != null);
 
@@ -41,6 +41,6 @@ class Navigation {
       ..continuation = continuation;
 
     return client.requestNavigation(
-        uri: Uri.parse(_app.navigationURL), request: request);
+        uri: Uri.parse(_app.navigationUrl), request: request);
   }
 }

@@ -6,14 +6,14 @@ void main() {
   group('Apps', () {
     test('initializeApp', () async {
       const testAppName = 'testApp';
-      const testNavigationURL = 'https://testapp:8080';
+      const testNavigationUrl = 'https://testapp:8080';
       const testProjectId = 'testProjectId';
       const testAppId = 'testAppId';
       const testAppVersion = '1.0.1';
 
       await initializeApp(
         name: testAppName,
-        navigationURL: testNavigationURL,
+        navigationUrl: testNavigationUrl,
         projectId: testProjectId,
         appId: testAppId,
         appVersion: testAppVersion,
@@ -22,7 +22,7 @@ void main() {
       App app = getAppNamed(testAppName);
 
       expect(app.name, equals(testAppName));
-      expect(app.navigationURL, equals(testNavigationURL));
+      expect(app.navigationUrl, equals(testNavigationUrl));
       expect(app.projectId, equals(testProjectId));
       expect(app.appId, equals(testAppId));
       expect(app.appVersion, equals(testAppVersion));
