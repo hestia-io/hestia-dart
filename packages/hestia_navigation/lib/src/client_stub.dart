@@ -1,3 +1,5 @@
+import 'navigation.pbgrpc.dart';
+
 Future<NavigationResponse> requestNavigation(
     {Uri uri, NavigationRequest request}) async {
   throw UnsupportedError(

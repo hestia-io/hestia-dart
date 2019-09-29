@@ -1,0 +1,21 @@
+name: hestia_ui 
+description: Hestia UI libraries for flutter
+author: Hestia Authors <chonebz@gmail.com>
+homepage: https://github.com/hestia-io/hestia-dart
+version: 0.2.1
+
+environment:
+  sdk: ">=2.2.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  hestia_navigation: #^0.3.0
+    path: ../hestia_navigation
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true

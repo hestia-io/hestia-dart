@@ -61,10 +61,19 @@ const NextContinuationData$json = const {
   ],
 };
 
+const PreviousContinuationData$json = const {
+  '1': 'PreviousContinuationData',
+  '2': const [
+    const {'1': 'clickTrackingParams', '3': 1, '4': 1, '5': 9, '10': 'clickTrackingParams'},
+    const {'1': 'continuation', '3': 2, '4': 1, '5': 9, '10': 'continuation'},
+  ],
+};
+
 const Continuation$json = const {
   '1': 'Continuation',
   '2': const [
     const {'1': 'nextContinuationData', '3': 1, '4': 1, '5': 11, '6': '.navigation.NextContinuationData', '10': 'nextContinuationData'},
+    const {'1': 'previousContinuationData', '3': 2, '4': 1, '5': 11, '6': '.navigation.PreviousContinuationData', '10': 'previousContinuationData'},
   ],
 };
 
@@ -220,10 +229,18 @@ const ItemSectionContinuation$json = const {
   ],
 };
 
+const RefreshIndicatorRenderer$json = const {
+  '1': 'RefreshIndicatorRenderer',
+  '2': const [
+    const {'1': 'navigationEndpoint', '3': 1, '4': 1, '5': 11, '6': '.navigation.NavigationEndpoint', '10': 'navigationEndpoint'},
+  ],
+};
+
 const SectionListRenderer$json = const {
   '1': 'SectionListRenderer',
   '2': const [
     const {'1': 'contents', '3': 1, '4': 3, '5': 11, '6': '.navigation.SectionListContent', '10': 'contents'},
+    const {'1': 'refreshIndicatorRenderer', '3': 2, '4': 1, '5': 11, '6': '.navigation.RefreshIndicatorRenderer', '10': 'refreshIndicatorRenderer'},
   ],
 };
 
