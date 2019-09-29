@@ -39,8 +39,14 @@ message NextContinuationData {
   string continuation = 2;
 }
 
+message PreviousContinuationData {
+  string clickTrackingParams = 1;
+  string continuation = 2;
+}
+
 message Continuation {
   NextContinuationData nextContinuationData = 1;
+  PreviousContinuationData previousContinuationData = 2;
 }
 
 message SpinnerRenderer {
@@ -140,8 +146,13 @@ message ItemSectionContinuation {
   string trackingParams = 3;
 }
 
+message RefreshIndicatorRenderer {
+  NavigationEndpoint navigationEndpoint = 1;  
+}
+
 message SectionListRenderer {
   repeated SectionListContent contents = 1;
+  RefreshIndicatorRenderer refreshIndicatorRenderer = 2;
 }
 
 /** Endpoint */

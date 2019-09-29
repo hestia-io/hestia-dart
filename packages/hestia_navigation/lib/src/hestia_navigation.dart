@@ -21,14 +21,17 @@ class HestiaNavigation {
 
   /// Request given endpoint
   Future<NavigationResponse> requestNavigation(
-      {NavigationEndpoint navigationEndpoint, String continuation = ''}) {
+      {NavigationEndpoint navigationEndpoint, String continuation}) {
     NavigationRequest request = NavigationRequest()
       ..navigationEndpoint = navigationEndpoint
       ..context = (NavigationRequestContext()
         ..client = (NavigationRequestContextClient()
           ..appId = _app.appId
-          ..appVersion = _app.appVersion))
-      ..continuation = continuation;
+          ..appVersion = _app.appVersion));
+
+    if (continuation != null) {
+      request.continuation = continuation;
+    }
 
     return client.requestNavigation(
         uri: Uri.parse(_app.navigationUrl), request: request);

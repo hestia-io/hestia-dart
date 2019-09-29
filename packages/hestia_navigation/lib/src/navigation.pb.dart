@@ -230,9 +230,42 @@ class NextContinuationData extends $pb.GeneratedMessage {
   void clearContinuation() => clearField(2);
 }
 
+class PreviousContinuationData extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('PreviousContinuationData', package: const $pb.PackageName('navigation'), createEmptyInstance: create)
+    ..aOS(1, 'clickTrackingParams', protoName: 'clickTrackingParams')
+    ..aOS(2, 'continuation')
+    ..hasRequiredFields = false
+  ;
+
+  PreviousContinuationData._() : super();
+  factory PreviousContinuationData() => create();
+  factory PreviousContinuationData.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory PreviousContinuationData.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  PreviousContinuationData clone() => PreviousContinuationData()..mergeFromMessage(this);
+  PreviousContinuationData copyWith(void Function(PreviousContinuationData) updates) => super.copyWith((message) => updates(message as PreviousContinuationData));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static PreviousContinuationData create() => PreviousContinuationData._();
+  PreviousContinuationData createEmptyInstance() => create();
+  static $pb.PbList<PreviousContinuationData> createRepeated() => $pb.PbList<PreviousContinuationData>();
+  static PreviousContinuationData getDefault() => _defaultInstance ??= create()..freeze();
+  static PreviousContinuationData _defaultInstance;
+
+  $core.String get clickTrackingParams => $_getS(0, '');
+  set clickTrackingParams($core.String v) { $_setString(0, v); }
+  $core.bool hasClickTrackingParams() => $_has(0);
+  void clearClickTrackingParams() => clearField(1);
+
+  $core.String get continuation => $_getS(1, '');
+  set continuation($core.String v) { $_setString(1, v); }
+  $core.bool hasContinuation() => $_has(1);
+  void clearContinuation() => clearField(2);
+}
+
 class Continuation extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('Continuation', package: const $pb.PackageName('navigation'), createEmptyInstance: create)
     ..a<NextContinuationData>(1, 'nextContinuationData', $pb.PbFieldType.OM, protoName: 'nextContinuationData', defaultOrMaker: NextContinuationData.getDefault, subBuilder: NextContinuationData.create)
+    ..a<PreviousContinuationData>(2, 'previousContinuationData', $pb.PbFieldType.OM, protoName: 'previousContinuationData', defaultOrMaker: PreviousContinuationData.getDefault, subBuilder: PreviousContinuationData.create)
     ..hasRequiredFields = false
   ;
 
@@ -254,6 +287,11 @@ class Continuation extends $pb.GeneratedMessage {
   set nextContinuationData(NextContinuationData v) { setField(1, v); }
   $core.bool hasNextContinuationData() => $_has(0);
   void clearNextContinuationData() => clearField(1);
+
+  PreviousContinuationData get previousContinuationData => $_getN(1);
+  set previousContinuationData(PreviousContinuationData v) { setField(2, v); }
+  $core.bool hasPreviousContinuationData() => $_has(1);
+  void clearPreviousContinuationData() => clearField(2);
 }
 
 class SpinnerRenderer extends $pb.GeneratedMessage {
@@ -843,9 +881,36 @@ class ItemSectionContinuation extends $pb.GeneratedMessage {
   void clearTrackingParams() => clearField(3);
 }
 
+class RefreshIndicatorRenderer extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('RefreshIndicatorRenderer', package: const $pb.PackageName('navigation'), createEmptyInstance: create)
+    ..a<NavigationEndpoint>(1, 'navigationEndpoint', $pb.PbFieldType.OM, protoName: 'navigationEndpoint', defaultOrMaker: NavigationEndpoint.getDefault, subBuilder: NavigationEndpoint.create)
+    ..hasRequiredFields = false
+  ;
+
+  RefreshIndicatorRenderer._() : super();
+  factory RefreshIndicatorRenderer() => create();
+  factory RefreshIndicatorRenderer.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory RefreshIndicatorRenderer.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  RefreshIndicatorRenderer clone() => RefreshIndicatorRenderer()..mergeFromMessage(this);
+  RefreshIndicatorRenderer copyWith(void Function(RefreshIndicatorRenderer) updates) => super.copyWith((message) => updates(message as RefreshIndicatorRenderer));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static RefreshIndicatorRenderer create() => RefreshIndicatorRenderer._();
+  RefreshIndicatorRenderer createEmptyInstance() => create();
+  static $pb.PbList<RefreshIndicatorRenderer> createRepeated() => $pb.PbList<RefreshIndicatorRenderer>();
+  static RefreshIndicatorRenderer getDefault() => _defaultInstance ??= create()..freeze();
+  static RefreshIndicatorRenderer _defaultInstance;
+
+  NavigationEndpoint get navigationEndpoint => $_getN(0);
+  set navigationEndpoint(NavigationEndpoint v) { setField(1, v); }
+  $core.bool hasNavigationEndpoint() => $_has(0);
+  void clearNavigationEndpoint() => clearField(1);
+}
+
 class SectionListRenderer extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('SectionListRenderer', package: const $pb.PackageName('navigation'), createEmptyInstance: create)
     ..pc<SectionListContent>(1, 'contents', $pb.PbFieldType.PM, subBuilder: SectionListContent.create)
+    ..a<RefreshIndicatorRenderer>(2, 'refreshIndicatorRenderer', $pb.PbFieldType.OM, protoName: 'refreshIndicatorRenderer', defaultOrMaker: RefreshIndicatorRenderer.getDefault, subBuilder: RefreshIndicatorRenderer.create)
     ..hasRequiredFields = false
   ;
 
@@ -864,6 +929,11 @@ class SectionListRenderer extends $pb.GeneratedMessage {
   static SectionListRenderer _defaultInstance;
 
   $core.List<SectionListContent> get contents => $_getList(0);
+
+  RefreshIndicatorRenderer get refreshIndicatorRenderer => $_getN(1);
+  set refreshIndicatorRenderer(RefreshIndicatorRenderer v) { setField(2, v); }
+  $core.bool hasRefreshIndicatorRenderer() => $_has(1);
+  void clearRefreshIndicatorRenderer() => clearField(2);
 }
 
 class BrowseEndpoint extends $pb.GeneratedMessage {

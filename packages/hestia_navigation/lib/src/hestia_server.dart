@@ -5,7 +5,7 @@ abstract class Service {}
 abstract class BrowseService implements Service {
   String browseId;
 
-  Future<NavigationResponse> browse(NavigationRequest request) {}
+  Future<NavigationResponse> browse(NavigationRequest request);
 }
 
 class _NavigationService extends NavigationServiceBase {
